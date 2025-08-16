@@ -1,0 +1,152 @@
+body {
+  background: linear-gradient(135deg, #fcafd5 25%, #a3ede8 100%) fixed;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  margin: 0;
+}
+h1 { color: #e75480; margin: 18px 0 2px 0; text-shadow: 1px 1px #fff0f5; }
+
+.controls {
+  margin: 16px 0 6px 0;
+  font-size: 1.16em;
+}
+#rollBtn {
+  padding: 8px 26px;
+  background: #e75480;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.13em;
+  cursor: pointer;
+  margin: 0 10px;
+  box-shadow: 0 2px 8px #e7548030;
+  transition: background 0.2s;
+}
+#rollBtn:disabled { background: #ccc; color: #999; cursor: not-allowed; }
+#diceResult {
+  font-size: 2em; color: #c084fc; margin-left: 10px; font-weight: bold;
+}
+.ludo-board {
+  display: grid;
+  grid-template-columns: repeat(15, 36px);
+  grid-template-rows: repeat(15, 36px);
+  gap: 1.5px;
+  margin: 22px auto 18px auto;
+  width: 564px; min-width: 564px; min-height: 564px;
+  background: #fff;
+  border-radius: 26px;
+  border: 5px solid #e75480;
+  box-shadow: 0 2px 20px #ffb6c160;
+}
+.cell {
+  width: 36px; height: 36px; border-radius: 11px;
+  position: relative; overflow: visible;
+  background: #fcafd530;
+  z-index: 1;
+}
+.corner { border-radius: 16px; outline: 2.5px solid #f8b8ff; }
+.corner.pink   { background: #fcafd5; }
+.corner.blue   { background: #b3d6fd; }
+.corner.yellow { background: #ffe066; }
+.corner.teal   { background: #a3ede8; }
+.corner.unicorn {
+  background: transparent;
+  background-size:cover;
+  border: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.unicorn-img {
+  width: 78px; height: 78px;
+  position: absolute; left: -10px; top: -10px;
+  z-index: 2; pointer-events: none;
+}
+.path-pink   { background: #f8b8ff; }
+.path-teal   { background: #c0fff8; }
+.path-yellow { background: #fffcc3; }
+.path-blue   { background: #dcecff; }
+
+.home-circle {
+  background: #fff;
+  border-radius: 50%;
+  width: 27px; height: 27px;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 10px #ffccec90;
+  position: absolute; top: 4px; left: 4px;
+  display: flex; align-items: center; justify-content: center; z-index: 1;
+}
+.home-circle.pink   { border-color: #ff69b4 }
+.home-circle.teal   { border-color: #0fbab6 }
+.home-circle.yellow { border-color: #ffe066 }
+.home-circle.blue   { border-color: #3587dc }
+
+/* Center diamond */
+.central-goal {
+  background: #fff0f5;
+  border: 3.5px solid #e75480;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ffe3fb90;
+  display: flex;
+  align-items: center; justify-content: center;
+}
+.central-goal img {
+  width: 42px; height: 42px;
+  filter: drop-shadow(2px 2px #fff2fa);
+}
+
+/* Safe star/cupcake overlays */
+.safe-spot::after {
+  content: '★';
+  font-size: 22px;
+  color: #ffb700;
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  opacity: 0.88;
+  z-index: 2;
+  text-shadow: 1px 1px #fff;
+}
+.safe-cupcake {
+  background: none!important;
+}
+.safe-cupcake::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 2px; right: 2px; width: 21px; height: 21px;
+  background-image: url(https://cdn.pixabay.com/photo/2017/01/31/20/15/cupcake-2022262_1280.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+.token {
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  border: 2.8px solid #fff;
+  box-shadow: 0 1px 5px #e1bbee70;
+  position: absolute;
+  left: 8px; top: 8px;
+  font-size: 1.11em;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9;
+  cursor: pointer;
+  font-weight: bold;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.token.pink   { background: #ff69b4; color: #fff; }
+.token.teal   { background: #31cdbc; color: #fff; }
+.token.yellow { background: #ffe066; color: #b68800; }
+.token.blue   { background: #3587dc; color: #fff; }
+.token.selected {
+  box-shadow: 0 2px 10px #9a42d1, 0 0 0 3px #fff7;
+  transform: scale(1.13);
+}
+#info { min-height: 26px; margin: 12px 0; color: #742855; font-weight: 500;}
+.legend {
+  margin-bottom: 14px;
+  font-size: 1.08em;
+  color: #df2b8b;
+  user-select: none;
+}
+.legend .star {
+  color: #ffb700; font-size: 20px; text-shadow: 1px 1px #fff;
+}
